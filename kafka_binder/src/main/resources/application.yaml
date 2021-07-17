@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: @project.artifactId@
+    version: @project.version@
+  cloud:
+    stream:
+      kafka:
+        binder:
+          #to be overridden with proper kafka configs
+          brokers: 127.0.0.1:9092
+          replication-factor: -1
+          min-partition-count: 4
+          auto-add-partitions: true
+          configuration:
+            "auto.offset.reset": latest
+            "max.poll.records": 1
+      bindings:
+        vendorMessageReceived-in-0:
+          destination: THIS.IS.A.DEMO
+          group: ${spring.application.name}

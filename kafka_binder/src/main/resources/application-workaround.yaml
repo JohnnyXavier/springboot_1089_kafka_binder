@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: workaround
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers:
+      binding-retry-interval: 31536000 #retry in a year as a of of being able to run the app locally / test without kafka reconnecting
+logging:
+  level:
+    org:
+      springframework:
+        context:
+          support: warn
+        cloud: debug
